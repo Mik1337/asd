@@ -36,17 +36,26 @@ release:
     owner: Mik1337
     name: asd
 
-# Updates the formula in Mik1337/homebrew-tap so users can:
+# Updates the cask in Mik1337/homebrew-tap so users can:
 #   brew install Mik1337/tap/asd   then   brew upgrade asd
 # Requires a separate repo named "homebrew-tap" and a token with access.
-brews:
+# Casks are macOS-only; Linux users install via `go install` or the tarballs.
+homebrew_casks:
   - name: asd
     repository:
       owner: Mik1337
       name: homebrew-tap
+      # PAT with write access to the tap repo. Locally, export TAP_GITHUB_TOKEN;
+      # in CI it comes from a repo secret (see .github/workflows/release.yml).
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
     homepage: "https://github.com/Mik1337/asd"
-    description: "Describe a command, get the command — inline in your terminal."
-    install: |
-      bin.install "asd"
-    test: |
-      system "#{bin}/asd", "version"
+    description: "Translate a natural-language description into a shell command"
+    license: "MIT"
+    # Strip the quarantine flag so the unsigned binary runs without a Gatekeeper
+    # prompt on first launch.
+    hooks:
+      post:
+        install: |
+          if system_command("/usr/bin/xattr", args: ["-h"]).exit_status == 0
+            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/asd"]
+          end

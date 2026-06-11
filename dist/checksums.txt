@@ -1,4 +1,0 @@
-b942cf665e08975e63be20cfc7610da74a86c59e7a90ee4d0de551ba56de4ef8  ./asd_darwin_amd64.tar.gz
-a63779cbb8b50e8ce3b1263e508d36dfa54d6c34f6e81b3ebdf8a2b4f7f9c319  ./asd_darwin_arm64.tar.gz
-ba7f3760abefc6f397b1e7455ca3f5af0cefc2431fd58e5c8eae2ea870f67ae5  ./asd_linux_amd64.tar.gz
-ddf87f0a27c7ee280748f771a3242069d83496e126d7eb024766145bc3f6e810  ./asd_linux_arm64.tar.gz
