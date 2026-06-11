@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"asd/internal/config"
-	"asd/internal/llm"
+	"github.com/Mik1337/asd/internal/config"
+	"github.com/Mik1337/asd/internal/llm"
 )
 
 type preset struct {

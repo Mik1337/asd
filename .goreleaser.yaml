@@ -1,0 +1,52 @@
+# goreleaser config — https://goreleaser.com
+# Cuts cross-platform binaries on a git tag and updates a Homebrew tap.
+#
+#   git tag v0.1.0 && git push origin v0.1.0
+#   goreleaser release --clean        (needs GITHUB_TOKEN)
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: asd
+    main: .
+    binary: asd
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+
+archives:
+  - id: asd
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: "checksums.txt"
+
+release:
+  github:
+    owner: Mik1337
+    name: asd
+
+# Updates the formula in Mik1337/homebrew-tap so users can:
+#   brew install Mik1337/tap/asd   then   brew upgrade asd
+# Requires a separate repo named "homebrew-tap" and a token with access.
+brews:
+  - name: asd
+    repository:
+      owner: Mik1337
+      name: homebrew-tap
+    homepage: "https://github.com/Mik1337/asd"
+    description: "Describe a command, get the command — inline in your terminal."
+    install: |
+      bin.install "asd"
+    test: |
+      system "#{bin}/asd", "version"

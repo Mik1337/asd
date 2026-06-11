@@ -15,13 +15,14 @@ import (
 	"strings"
 	"time"
 
-	"asd/internal/config"
-	"asd/internal/llm"
-	"asd/internal/parse"
-	"asd/internal/wizard"
+	"github.com/Mik1337/asd/internal/config"
+	"github.com/Mik1337/asd/internal/llm"
+	"github.com/Mik1337/asd/internal/parse"
+	"github.com/Mik1337/asd/internal/wizard"
 )
 
-const version = "0.1.0"
+// version is overridden at build time via -ldflags "-X main.version=...".
+var version = "dev"
 
 const usage = `asd — describe a command, get the command.
 

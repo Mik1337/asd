@@ -1,4 +1,4 @@
-module asd
+module github.com/Mik1337/asd
 
 go 1.21
 

@@ -16,12 +16,22 @@ local/OpenAI-compatible model — your key, your model.
 
 ## Install
 
-```sh
-# Homebrew (planned)
-brew install asd
+```fish
+# Go (any platform)
+go install github.com/Mik1337/asd@latest
+fish_add_path ~/go/bin                      # run once if it isn't on PATH yet
 
-# or build from source
-go build -o asd .
+# Homebrew (after the first tagged release)
+brew install Mik1337/tap/asd
+```
+
+From a local clone: `make install` (or `go install .`).
+
+## Update
+
+```fish
+go install github.com/Mik1337/asd@latest    # Go: re-run to get the latest
+brew upgrade asd                            # Homebrew
 ```
 
 First run sets up a provider interactively:
