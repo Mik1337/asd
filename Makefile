@@ -6,7 +6,7 @@ endif
 VERSION := $(shell git describe --tags --always --dirty 2>/dev/null || echo dev)
 LDFLAGS := -ldflags "-s -w -X main.version=$(VERSION)"
 
-.PHONY: build install uninstall clean
+.PHONY: build install uninstall clean dist
 
 ## build: compile a local ./asd binary
 build:
@@ -21,6 +21,11 @@ install:
 uninstall:
 	rm -f $(GOBIN)/$(BINARY)
 
-## clean: remove the local build artifact
+## dist: cross-compile release archives + checksums into ./dist
+dist:
+	./scripts/build-bundle.sh $(VERSION)
+
+## clean: remove build artifacts
 clean:
 	rm -f $(BINARY)
+	rm -rf dist

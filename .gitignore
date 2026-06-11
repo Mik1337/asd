@@ -1,0 +1,31 @@
+# Build artifacts
+/asd                 # local `make build` / `go build -o asd` output
+/dist/               # goreleaser output
+*.exe
+*.test
+*.out
+
+# Go
+vendor/
+go.work
+go.work.sum
+
+# Coverage / profiling
+coverage.txt
+*.cover
+*.prof
+
+# Env & secrets (asd's real config lives in ~/.config/asd, but never commit keys)
+.env
+.env.*
+*.local
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS cruft
+.DS_Store
+Thumbs.db
