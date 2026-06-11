@@ -1,5 +1,7 @@
 # asd
 
+<img width="3852" height="2150" alt="nano-banana-2-kn7dy8d2t1dapetace3w8x3b7n88f21b-upscaled" src="https://github.com/user-attachments/assets/acf46e21-7d81-4ed2-a082-3485bf43b8dd" />
+
 For when `man` is a wall of text and your memory is worse.
 
 `asd` helps when you roughly know the command, but not the exact syntax.
