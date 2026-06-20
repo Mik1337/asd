@@ -37,7 +37,9 @@ Flags:
   -q, --quiet          command only, no explanation
   -m, --model NAME     override the configured model for this call
   -v, --version        print version
-  -h, --help           show this help`
+  -h, --help           show this help
+
+Issues & source: https://github.com/Mik1337/asd`
 
 type args struct {
 	query []string
